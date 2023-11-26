@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "webpack serve",
-    "build": "webpack --mode=production --node-env=production",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "wp:serve": "webpack serve",
+    "wp:build": "webpack --mode=production --node-env=production",
+    "wp:lint": "vue-cli-service lint",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch"
@@ -19,7 +22,8 @@
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-native-websocket": "^2.0.15",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
