@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  frontend:
+    networks:
+      - ws_network
+    hostname: 'frontend-service'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    command: ["npm", "run", "serve"]
+networks:
+  ws_network:
+    driver: bridge
+    name: 'ws_network'
+    external: true

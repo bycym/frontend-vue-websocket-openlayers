@@ -1,0 +1,45 @@
+{
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "webpack serve",
+    "build": "webpack --mode=production --node-env=production",
+    "lint": "vue-cli-service lint",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
+  },
+  "dependencies": {
+    "@types/ol": "^7.0.0",
+    "@vue/cli": "^5.0.8",
+    "core-js": "^3.8.3",
+    "dotenv": "^16.3.1",
+    "ol": "^8.2.0",
+    "vue": "^3.2.13",
+    "vue-class-component": "^8.0.0-0",
+    "vue-native-websocket": "^2.0.15",
+    "vue-router": "^4.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-airbnb": "^6.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "@webpack-cli/generators": "^3.0.7",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-vue": "^8.0.3",
+    "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "typescript": "~4.5.5",
+    "webpack-cli": "^5.1.4"
+  },
+  "description": "My webpack project"
+}
