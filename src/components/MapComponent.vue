@@ -35,22 +35,22 @@ export default class MapComponent extends Vue {
   private map: Map | null = null;
   private boatFeature = new Feature({
     geometry: new Point([0, 0]),
-  });;
-  // public mapPos = { latitude: 48.21340378, longitude: 20.73998763, heading: 3.678493726 }
-  // data() {
-  //   return {
-  //     dataToBeWatched: ''
-  //   }
-  // }
+  });
+  private boatStyle = new Style({
+    image: new Icon({
+      src: require('@/assets/boat-icon.png'),
+      scale: 0.05,
+      rotateWithView: true,
+      rotation: Math.PI / 2,
+    }),
+  })
   private boatLayer!: Vector<VectorSource<Feature<Point>>>
   private boatPath: [number, number][] = [];
   public isRecording: boolean = false
   public recordedPath: number[][] = []
   private playbackInterval = -1
   private boatTrackingInterval = -1
-  // get lastPositionForBoat() {
-  //   return this.$store.getters.getCount;
-  // }
+
   mounted() {
     this.initializeMap();
     this.initializeBoat();
@@ -84,15 +84,16 @@ export default class MapComponent extends Vue {
       name: 'Boat',
     });
 
+    // this.boatStyle = new Style({
+    //   image: new Icon({
+    //     src: require('@/assets/boat-icon.png'),
+    //     scale: 0.05,
+    //     rotateWithView: true,
+    //     rotation: Math.PI / 2,
+    //   }),
+    // })
     this.boatFeature.setStyle(
-      new Style({
-        image: new Icon({
-          src: require('@/assets/boat-icon.png'),
-          scale: 0.05,
-          rotateWithView: true,
-          rotation: Math.PI / 2,
-        }),
-      })
+      this.boatStyle
     );
 
     this.boatLayer = new VectorLayer({
@@ -127,6 +128,7 @@ export default class MapComponent extends Vue {
 
     // Set the new coordinates and rotation
     this.boatFeature.getGeometry()?.setCoordinates(coordinates);
+    this.boatStyle?.getImage()?.setRotation(rotation);
   }
 
   toggleRecording() {

@@ -9,7 +9,6 @@
     </div>
     <p v-else>
     <p>WebSocket connection is open.</p>
-    <!-- <div ref="map" class="map"></div> -->
     </p>
 
   </div>
