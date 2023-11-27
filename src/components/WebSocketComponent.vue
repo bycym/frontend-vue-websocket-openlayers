@@ -17,7 +17,10 @@
 
 <script lang="ts">
 import { PositionType } from '@/store/store.js';
+import { throwStatement } from '@babel/types';
 import { Vue } from 'vue-class-component';
+import store from '@/store/store';
+
 
 export default class WebSocketComponent extends Vue {
   public isLoading: boolean = true;
@@ -49,6 +52,20 @@ export default class WebSocketComponent extends Vue {
       this.latitude = data.latitude;
       this.longitude = data.longitude;
       this.heading = data.heading;
+
+      const position = {
+        latitude: data.latitude,
+        longitude: data.longitude,
+        heading: data.heading,
+        created: new Date(),
+      } as PositionType
+      console
+      store.addPositionToBoat('csobanka', position)
+      // this.$store.dispatch({
+      //   type: "addPositionToBoat",
+      //   // TODO: better handling boatname
+      //   payload: { boatName: "botName", position: position },
+      // })
     }
     socket.addEventListener('message', handleWebSocketData);
     socket.addEventListener('close', () => {
@@ -63,23 +80,6 @@ export default class WebSocketComponent extends Vue {
         clearInterval(spinnerInterval); // Stop the loading spinner when the connection is open or closed
       }
     }, 200);
-  }
-
-  handleWebSocketData(event: any) {
-    const data = JSON.parse(event.data);
-
-    const { latitude, longitude, heading } = data;
-    const position = {
-      latitude: latitude,
-      longitude: longitude,
-      heading: heading,
-      created: new Date(),
-    } as PositionType
-    this.$store.dispatch({
-      type: "addPositionToBoat",
-      // TODO: better handling boatname
-      payload: { boatName: "botName", position: position },
-    })
   }
 }
 </script>
